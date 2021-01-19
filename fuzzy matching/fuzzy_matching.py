@@ -12,13 +12,13 @@ import pyodbc
 
 
 cnxn = pyodbc.connect(driver='{SQL Server Native Client 11.0}', 
-                      host='USSLTCHER1012SQ.dan.sltc.com', database='PBB_V01_DAP_IA_GOOGLE_P2P_2', trusted_connection='yes')                      
+                      host='XXXXXXXXX', database='XXXXXXXXX', trusted_connection='yes')                      
 
 
-df = pd.read_sql_query(''' SELECT   * FROM dbo.set_for_fuzzy_match''',cnxn )
+df = pd.read_sql_query(''' SELECT * FROM table''',cnxn )
 
 
-df['FUZZY_MATCH'] = df.apply(lambda row: fuzz.token_sort_ratio(row['INV_ITEM_DESCRIPTION_1'], row['INV_ITEM_DESCRIPTION_2']), axis=1)
+df['FUZZY_MATCH'] = df.apply(lambda row: fuzz.token_sort_ratio(row['column1'], row['column2']), axis=1)
 
 
 df.to_csv('output_fuzzy.csv')
